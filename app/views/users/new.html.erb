@@ -1,0 +1,31 @@
+<nav>
+  <%= link_to image_tag("arrow.svg", :border=>0, :class=> 'back-icon'), request.referer %>
+  <h1>Sign Up</h1>
+  <%# Submit the form using an anchor tag %>
+  <%= link_to_function "Register","javascript:document.getElementById('register_form').submit(); return false" %>
+</nav>
+
+<section>
+  <div>
+    <% if flash[:success] %>
+      <h5><%= flash[:success] %></h5>
+    <% elsif flash.now[:danger] %>
+      <h5><%= flash.now[:danger] %></h5>
+    <% elsif @user.errors.any? %>
+      <h5>Please Fix The Following:</h5>
+      <ul>
+        <% flash.now[:warning].each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+  <%= form_for @user,
+    url: { method: 'post', action: 'create' },
+    html: { class: 'form', id: 'register_form'} do |f| %>
+    <% f.label :name, "Username" %>
+    <% f.text_field :name %>
+  <% end %>
+</section>
+
+
