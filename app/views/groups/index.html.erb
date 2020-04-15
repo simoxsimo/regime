@@ -3,11 +3,15 @@
   <h1>All groups</h1>
   <%= link_to 'Log Out', logout_path, method: "delete" %>
 </nav>
-<section class="show-page">
+<section class="show-page groups">
   <%# Eager loading Active Storage models %>
   <% @groups.includes(icon_attachment: :blob).each do |grp| %>
     <article>
-      <%= image_tag(grp.icon, class: "group_icon")%>
+      <% if grp.icon.attached? %>
+        <%= image_tag(grp.icon, class: "group_icon")%>
+      <% else %>
+        <div class="group_icon"></div>
+      <% end %>
       <div class="list-text">
         <span><%= grp.created_at.to_date %></span>
         <h3><%= grp.name.capitalize %></h3>

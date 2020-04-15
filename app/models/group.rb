@@ -5,19 +5,15 @@ class Group < ApplicationRecord
   has_one_attached :icon
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 24 }
-  validate :icon_validation
-
-  private
+  after_save :icon_validation
 
   def icon_validation
     return unless icon.attached?
 
-    if icon.blob.byte_size > 1_000_000
+    if icon.blob.byte_size > 1000000
       icon.purge
-      flash.now[:danger] = 'Your image size is big, try upload one with a less than 1 MB'
     elsif !icon.blob.image?
       icon.purge
-      flash.now[:danger] = 'Wrong format, please upload an image'
     end
   end
 end

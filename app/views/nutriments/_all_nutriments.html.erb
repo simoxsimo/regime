@@ -13,7 +13,7 @@
           <section>
             <%# Case of mutiple groups & Eager loading Active Storage models%>
             <% ntr.groups.includes(icon_attachment: :blob).each do |group| %>
-              <%= image_tag(group.icon) %>
+              <%= image_tag(group.icon) if group.icon.attached?%>
             <% end %>
           </section>
         <% end%>

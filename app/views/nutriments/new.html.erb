@@ -10,11 +10,9 @@
     <% if flash[:success] %>
       <h5><%= flash[:success] %></h5>
     <% elsif @nutriment.errors.any? %>
-      <ul>
         <% flash.now[:warning].each do |msg| %>
-          <li><%= msg %></li>
+          <h5><%= msg %></h5>
         <% end %>
-      </ul>
     <% end %>
   </div>
   <%= form_for @nutriment do |f| %>

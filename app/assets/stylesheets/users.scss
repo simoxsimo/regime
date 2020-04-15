@@ -98,8 +98,9 @@ body{
         height: 90vh;
         background-color: $main-color;
         h3{
+            margin-left: 20px;
             font-family: 'Libre Barcode 128 Text', cursive;
-            font-size: 170px;
+            font-size: 190px;
             color: rgb(238, 253, 253);
         }
         ul{
@@ -126,6 +127,11 @@ body{
                 }
             }
         }
+    }
+    .groups{
+        padding-top: 20px;
+        justify-content: flex-start;
+        height: auto;
     }
     footer{
         form{

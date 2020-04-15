@@ -10,12 +10,13 @@ User.create!(name: 'admin')
 user = []
 
 9.times do |n|
-  user[n] = User.create!(name: "#{Faker::Name.first_name}_s#{n+1}")
+  user[n] = User.create!(name: "seed#{n+1}")
 end
 
-user.each do |val|
+user.each_with_index do |val, i|
   3.times do
     val.nutriments.create!(name: Faker::Food.fruits,
                            amount: Faker::Number.number(digits: 4))
   end
+  val.groups.create!(name: "no-icon grp #{i}")
 end
