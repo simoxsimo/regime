@@ -1,0 +1,7 @@
+<nav>
+  <%= link_to image_tag("arrow.svg", :border=>0, :class=> 'back-icon'), user_path(current_user) %>
+  <h1>All my external nutriments</h1>
+  <%= link_to 'Log Out', logout_path, method: "delete" %>
+</nav>
+
+<%= render partial: "all_nutriments", locals: {nutriments: @nutriments} %>

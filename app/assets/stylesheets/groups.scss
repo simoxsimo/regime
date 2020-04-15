@@ -1,0 +1,137 @@
+// Place all the styles related to the groups controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+$main-color: #3778c2;
+$text-color: #bbd2ee;
+$text-color2: #434B54;
+$font: 'Baloo Tamma 2', cursive;
+$main-color: #3778c2;
+$text-color: #bbd2ee;
+$text-color2: #434B54;
+$font: 'Baloo Tamma 2', cursive;
+
+@mixin form-style{
+    margin: 2.5vh 0 0 4vw;
+    height: 25vh;
+    label{
+        font-size: 55px;
+        color: $text-color2;
+    }
+    input{
+        height: 65px;
+        width: 60vw;
+        margin-left: 20px;
+        border-radius: 10px;
+        border: none;
+        font-size: 40px;
+
+        &:focus{
+            border: 1px solid $text-color2;
+        }
+    }
+}
+
+@mixin footer-btn{
+    width: 100vw;
+    height: 10vh;
+    border: none;
+    border-radius: 10px;
+    font-family: $font;
+    font-size: 50px;
+}
+
+@mixin create-form {
+    @include form-style;
+    section{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 40px 60px 0;
+        label{
+            font-size: 44px;
+        }
+        input{
+            margin: 0;
+            border: 3px solid $text-color2;
+            border-radius: 8px;
+            width: 50vw;
+        }
+        select{
+            width: 50vw;
+            height: 10vh;
+            border: 3px solid $text-color2;
+            border-radius: 8px;
+            font-size: 33px;
+            color: $text-color2;
+        }
+    }
+
+    .form-btn{
+        @include footer-btn;
+        margin: 0;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        background-color: rgb(119, 243, 119);
+        font-size: 60px;
+        color: $text-color2;
+    }
+}
+
+body{
+    .show-page{
+        article{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 15px 0;
+            width: 80vw;
+            height: 10vh;
+            border-radius: 10px;
+            background-color: #5891D1;
+            
+            img{
+                width: 8vh;
+                height: 8vh;
+                margin-left: 10px;
+            }
+            .list-text{
+                margin: 0;
+                span{
+                    color: rgb(238, 253, 253);
+                    font-size: 25px;
+                    letter-spacing: 10px;
+                    height: 2vh;
+                }
+                h3{
+                    font-size: 125px;
+                    height: 7vh;
+                }
+            }
+            .article-btn{
+                margin: 15px 0;
+                position: relative;
+                width: 80vw;
+                height: 10vh;
+                background-color: transparent;
+                border: none;
+                top: -10vh; // put the button on top of article container
+                flex: 0 0 100%; //ignore last flex component
+            }
+        }
+    }
+    section{
+        .list{
+            min-height: 80vh;
+            article{
+                section{
+                    margin: 0;
+                }
+            }
+        }
+        #new_group{
+            @include create-form;
+        }
+    }
+}

@@ -1,0 +1,32 @@
+<% total = 0%>
+
+<% nutriments.each do |ntr|%>
+  <% total += ntr.amount%>
+<% end%>
+
+<section>
+  <h2>The Total Amount:&emsp;<%= total%> Kcal</h2>
+  <div class="list">
+    <% nutriments.each do |ntr|%>
+      <article>
+        <% unless ntr.groups.empty? %>
+          <section>
+            <%# Case of mutiple groups %>
+            <% ntr.groups.each do |group| %>
+              <%= image_tag(group.icon) %>
+            <% end %>
+          </section>
+        <% end%>
+        <div class="list-text">
+          <h3><%= ntr.name.capitalize %></h3>
+          <span><%= ntr.created_at.to_date %></span>
+        </div>
+        <h3><%= ntr.amount %> Kcal</h3>
+      </article>
+    <% end%>
+  </div>
+</section>
+
+<footer>
+  <%= button_to "Add New", new_nutriment_path, {method: :get, class: 'btn footer-btn'} %>
+</footer>

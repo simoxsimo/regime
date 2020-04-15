@@ -1,3 +1,36 @@
 // Place all the styles related to the sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+$main-color: #3778c2;
+$text-color: #bbd2ee;
+$text-color2: #434B54;
+$font: 'Baloo Tamma 2', cursive;
+
+@mixin form-style{
+    margin: 2.5vh 0 0 4vw;
+    height: 25vh;
+    label{
+        font-size: 55px;
+        color: $text-color2;
+    }
+    input{
+        height: 65px;
+        width: 60vw;
+        margin-left: 20px;
+        border-radius: 10px;
+        border: none;
+        font-size: 40px;
+
+        &:focus{
+            border: 1px solid $text-color2;
+        }
+    }
+}
+
+body{
+    section{
+        #login_form{
+            @include form-style;
+        }
+    }
+}

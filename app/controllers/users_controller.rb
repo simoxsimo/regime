@@ -19,6 +19,10 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find_by(id: params[:id])
+    unless logged_in? && @user == current_user
+      redirect_to home_path
+    end
   end
 
   private

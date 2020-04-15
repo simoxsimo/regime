@@ -1,3 +1,139 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+$main-color: #3778c2;
+$text-color: #bbd2ee;
+$text-color2: #434B54;
+$font: 'Baloo Tamma 2', cursive;
+
+@mixin flex-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+@mixin form-style{
+    margin: 2.5vh 0 0 4vw;
+    height: 25vh;
+    label{
+        font-size: 55px;
+        color: $text-color2;
+    }
+    input{
+        height: 65px;
+        width: 60vw;
+        margin-left: 20px;
+        border-radius: 10px;
+        border: none;
+        font-size: 40px;
+
+        &:focus{
+            border: 1px solid $text-color2;
+        }
+    }
+}
+
+@mixin footer-btn{
+    width: 100vw;
+    height: 10vh;
+    border: none;
+    border-radius: 10px;
+    font-family: $font;
+    font-size: 50px;
+}
+
+body{
+    @include flex-column;
+    font-family: $font;
+
+    nav{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 7vh;
+        background-color: $main-color;
+        padding: 0 2.5vw;
+        padding-top: 3vh;
+    
+        a{
+            text-decoration: none;
+            color: rgb(243, 243, 243);
+            font-size: 40px;
+            width: 150px;
+            .back-icon{
+                width: 80px;
+                height: 80px;
+                margin-top: 10px;
+            }
+        }
+
+        h1{
+            font-size: 50px;
+            color: rgb(243, 243, 243);
+        }
+    }
+    section{
+        .login-flash{
+            font-size: 40px;
+            padding-left: 15px;
+            border-left: 8px solid $text-color2;
+            color: rgb(243, 243, 243);
+          }
+        div{
+          margin-top: 15px;
+          h5{
+            font-size: 40px;
+            padding-left: 15px;
+            border-left: 8px solid $text-color2;
+          }
+        }
+        #register_form{
+            @include form-style;
+        }
+    }
+    .show-page{
+        @include flex-column;
+        justify-content: space-around;
+        align-items: center;
+        height: 90vh;
+        background-color: $main-color;
+        h3{
+            font-family: 'Libre Barcode 128 Text', cursive;
+            font-size: 170px;
+            color: rgb(238, 253, 253);
+        }
+        ul{
+            width: 80vw;
+            height: 25vh;
+            li{
+                margin: 1vh 0;
+                padding: 1vh 0 1vh 5vw;
+                list-style: none;
+                font-family: $font;
+                font-size: 60px;
+                border-radius: 10px;
+                background-color: #5891D1;
+
+                &:active{
+                    box-shadow: -9px 11px 32px -8px rgba(0,0,0,0.62);
+                }
+
+                a{
+                    display: block;
+                    width: 100%;
+                    text-decoration: none;
+                    color: rgb(238, 253, 253);
+                }
+            }
+        }
+    }
+    footer{
+        form{
+            .logout-btn{
+                @include footer-btn;
+                background-color: #FFDB5E;
+                color: $text-color2;
+            }
+        }
+    }
+}

@@ -1,3 +1,64 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+$main-color: #3778c2;
+$text-color: #bbd2ee;
+$text-color2: #434B54;
+$font: 'Baloo Tamma 2', cursive;
+
+@mixin btn-styling {
+    width: 90vw;
+    height: 7.5vh;
+    border: none;
+    border-radius: 10px;
+    font-family: $font;
+    color: $text-color;
+    font-size: 55px;
+    padding-top: 1vh;
+}
+
+section{
+    h1{
+        height: 25vh;
+        font-family: 'Cookie', cursive;
+        font-size: 200px;
+        text-align: center;
+        padding: 25vh 0;
+        animation: pulse 5s infinite;
+        @keyframes pulse {
+            40% {
+              color: black;
+            }
+            70% {
+              color: rgb(243, 243, 243);
+            }
+            100% {
+                color: black;
+            }
+        }
+    }
+    
+    div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        form{
+            padding-top: 1vh;
+
+            .btn{
+                @include btn-styling;
+            }
+            .login-btn{
+                background-color: $main-color;
+            }
+            .signup-btn{
+                background-color: transparent;
+
+                &:focus{
+                    color: $text-color2;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,143 @@
+// Place all the styles related to the nutriments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+$main-color: #3778c2;
+$text-color: #bbd2ee;
+$text-color2: #434B54;
+$font: 'Baloo Tamma 2', cursive;
+
+@mixin form-style{
+    margin: 2.5vh 0 0 4vw;
+    height: 25vh;
+    label{
+        font-size: 55px;
+        color: $text-color2;
+    }
+    input{
+        height: 65px;
+        width: 60vw;
+        margin-left: 20px;
+        border-radius: 10px;
+        border: none;
+        font-size: 40px;
+
+        &:focus{
+            border: 1px solid $text-color2;
+        }
+    }
+}
+
+@mixin footer-btn{
+    width: 100vw;
+    height: 10vh;
+    border: none;
+    border-radius: 10px;
+    font-family: $font;
+    font-size: 50px;
+}
+
+@mixin create-form {
+    @include form-style;
+    section{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 40px 60px 0;
+        label{
+            font-size: 44px;
+        }
+        input{
+            margin: 0;
+            border: 3px solid $text-color2;
+            border-radius: 8px;
+            width: 50vw;
+        }
+        select{
+            width: 50vw;
+            height: 10vh;
+            border: 3px solid $text-color2;
+            border-radius: 8px;
+            font-size: 33px;
+            color: $text-color2;
+        }
+    }
+
+    .form-btn{
+        @include footer-btn;
+        margin: 0;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        background-color: rgb(119, 243, 119);
+        font-size: 60px;
+        color: $text-color2;
+    }
+}
+
+body{
+    section{
+        margin-bottom: 10vh;
+        h2{
+            padding: 20px 20px 10px 0;
+            text-align: right;
+            font-size: 40px;
+            border-bottom: 3px solid rgba(151, 151, 151, 0.561);
+            border-left: 25px solid #5891D1;
+        }
+        .list{
+            margin: 0;
+            background-color: rgb(228, 238, 248);
+            article{
+                width: 95vw;
+                height: 8vh;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin: 15px 0;
+                background-color: rgb(247, 252, 255);
+                border-radius: 10px;
+
+                img{
+                    width: 6vh;
+                    height: 6vh;
+                    margin-left: 10px;
+                }
+                .list-text{
+                    margin-left: 20px;
+                    text-align: left;
+                    h3{
+                        font-size: 44px;
+                        height: 50px;
+                    }
+                    span{
+                        font-size: 28px;
+                    }
+                    h3,
+                    span{
+                        color: rgb(109, 109, 109);
+                        width: 100%;
+                    }
+                }
+                h3{
+                    margin-right: 20px;
+                    font-size: 40px;
+                    color: $text-color2;
+                }
+            }
+        }
+        #new_nutriment{
+            @include create-form
+        }
+    }
+    footer{
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        .footer-btn{
+            @include footer-btn;
+            background-color: rgb(119, 243, 119);
+            font-size: 60px;
+            color: $text-color2;
+        }
+    }
+}

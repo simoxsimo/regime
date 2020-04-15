@@ -1,0 +1,21 @@
+<nav>
+  <%= link_to image_tag("arrow.svg", :border=>0, :class=> 'back-icon'), user_path(current_user) %>
+  <h1>All groups</h1>
+  <%= link_to 'Log Out', logout_path, method: "delete" %>
+</nav>
+<section class="show-page">
+  <% @groups.each do |grp| %>
+    <article>
+      <%= image_tag(grp.icon, class: "group_icon")%>
+      <div class="list-text">
+        <span><%= grp.created_at.to_date %></span>
+        <h3><%= grp.name.capitalize %></h3>
+      </div>
+      <%= button_to "", group_path(grp.id), {method: :get, class: 'btn article-btn'}%>
+    </article>
+  <% end %>
+</section>
+
+<footer>
+  <%= button_to "Add New", new_group_path, {method: :get, class: 'btn footer-btn'} %>
+</footer>
