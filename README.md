@@ -1,17 +1,17 @@
-# Regime - Rails Capstone Project
+# **Regime - Rails Capstone Project**
 
 > This project consists of building a site intended for smartphones, that consist of grouping the nutriments consumed by a given user while calculating the total calories consumed.
 
-## Built With
+### Built With
 
 - Ruby v2.7.0
 - Ruby on Rails v6.0.2.2
 
-## Live Demo
+## **Live Demo**
 
-[Deployed on Heroku!!](#)
+**_[Deployed on Heroku!!](https://regime-app.herokuapp.com/)_**
 
-## Prerequisites
+# Prerequisites
 
 The development environment uses `Ruby`, hence install ruby before proceeding.
 
@@ -21,7 +21,7 @@ The development environment uses `Ruby`, hence install ruby before proceeding.
 
 - windows - Download RubyInstaller [here](https://rubyinstaller.org/), run it, and you are done!
 
-### Installing Dependencies
+### ⭐️ Installing Dependencies
 
 _(If you have **Bundler** installed "To Check if **Bundler** is installed, run this command \*\*\_bundle -v_**, if you get **_Bundler version 2.x.x_\*\*", please skip to the next step!)\_
 
@@ -49,7 +49,7 @@ Now, you are ready to install the _Gemfile_ dependencies. Run the following comm
 
 5. Run `rails db:migrate`
 
-## ⭐️ Running the code
+### ⭐️ Running the code
 
 Inside The project Repository run the following command:
 
@@ -59,7 +59,7 @@ Inside The project Repository run the following command:
 
 Then, go to **_http://localhost:3000/_**
 
-## Add populating the database using seed
+### ⭐️ Add populating the database using seed
 
 1. Run `rails db:seed` to populating a database with the initial data needed for a Rails project.
 
@@ -67,10 +67,7 @@ Then, go to **_http://localhost:3000/_**
 for example: for n = 1 our seed will be `seed1`
 
 
-### A Simple Use Case
-
-
-## ⭐️ Testing the code with Rspec
+### ⭐️ Testing the code with Rspec
 
 Inside The project Repository run the following command:
 
@@ -78,7 +75,21 @@ Inside The project Repository run the following command:
     $ rspec
 ```
 
-## Author
+# A Simple Use Case
+
+### ⭐️ Home Page & Sign Up
+![1](https://user-images.githubusercontent.com/57480558/79395190-a7fe2b00-7f68-11ea-8f4d-a2e567fc377c.gif)
+
+### ⭐️ Profile Page & Group Creation
+![2](https://user-images.githubusercontent.com/57480558/79395191-a896c180-7f68-11ea-8c5f-60a90d080044.gif)
+
+### ⭐️ Creating Nutriment _(Group Member)_
+![3](https://user-images.githubusercontent.com/57480558/79395195-a9c7ee80-7f68-11ea-9698-1e86d6f2acd5.gif)
+
+### ⭐️ Creating Nutriment _(Groupless)_
+![4](https://user-images.githubusercontent.com/57480558/79395193-a92f5800-7f68-11ea-81f6-8a9bfdf4080b.gif)
+
+## **Author**
 
 👤 **Mohammed TOUILI**
 

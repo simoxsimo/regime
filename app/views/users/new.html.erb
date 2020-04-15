@@ -9,13 +9,10 @@
   <div>
     <% if flash.now[:danger] %>
       <h5><%= flash.now[:danger] %></h5>
-    <% elsif @user.errors.any? %>
-      <h5>Please Fix The Following:</h5>
-      <ul>
-        <% flash.now[:warning].each do |msg| %>
-          <li><%= msg %></li>
+    <% elsif flash[:warning] %>
+        <% flash[:warning].each do |msg| %>
+          <h5><%= msg %></h5>
         <% end %>
-      </ul>
     <% end %>
   </div>
   <%= form_for @user, url: { method: 'post', action: 'create' }, html: { class: 'form', id: 'register_form'} do |f| %>

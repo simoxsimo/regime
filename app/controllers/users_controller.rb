@@ -13,8 +13,8 @@ class UsersController < ApplicationController
       flash.now[:danger] = 'An Unknown Error Has Occurred, Please Refresh the page!!'
       render :new
     else
-      flash.now[:warning] = @user.errors.full_messages
-      render :new
+      flash[:warning] = @user.errors.full_messages
+      redirect_to request.referrer
     end
   end
 
