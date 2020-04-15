@@ -38,6 +38,15 @@ class NutrimentsController < ApplicationController
     end
   end
 
+  def index_daily
+    if logged_in?
+      @nutriments = current_user.nutriments.includes(:groups).order(created_at: :desc)
+        .where(['created_at >= ? AND created_at <= ?', Date.today.beginning_of_day, Date.today.end_of_day])
+    else
+      redirect_to home_path
+    end
+  end
+
   private
 
   def nutriment_params

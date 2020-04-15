@@ -10,7 +10,7 @@ class Group < ApplicationRecord
   def icon_validation
     return unless icon.attached?
 
-    if icon.blob.byte_size > 1000000
+    if icon.blob.byte_size > 1_000_000
       icon.purge
     elsif !icon.blob.image?
       icon.purge
