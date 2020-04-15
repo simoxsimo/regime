@@ -4,7 +4,8 @@
   <%= link_to 'Log Out', logout_path, method: "delete" %>
 </nav>
 <section class="show-page">
-  <% @groups.each do |grp| %>
+  <%# Eager loading Active Storage models %>
+  <% @groups.includes(icon_attachment: :blob).each do |grp| %>
     <article>
       <%= image_tag(grp.icon, class: "group_icon")%>
       <div class="list-text">

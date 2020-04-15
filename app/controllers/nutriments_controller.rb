@@ -1,9 +1,9 @@
 class NutrimentsController < ApplicationController
   def new
-    unless logged_in?
-      redirect_to home_path
-    else
+    if logged_in?
       @nutriment = current_user.nutriments.new
+    else
+      redirect_to home_path
     end
   end
 
@@ -12,7 +12,7 @@ class NutrimentsController < ApplicationController
     @nutriment = current_user.nutriments.create(nutriment_params)
     if @nutriment.save
       loop_and_store(@nutriment)
-      flash[:success] = "Your nutriment has been Successfully created !!"
+      flash[:success] = 'Your nutriment has been Successfully created !!'
       redirect_to(request.referrer)
     else
       flash.now[:warning] = @nutriment.errors.full_messages
@@ -21,18 +21,20 @@ class NutrimentsController < ApplicationController
   end
 
   def index
-    unless logged_in?
-      redirect_to home_path
+    if logged_in?
+      @nutriments = current_user.nutriments.includes(:groups).order(created_at: :desc)
     else
-      @nutriments = current_user.nutriments.order(created_at: :desc)
+      redirect_to home_path
     end
   end
 
   def no_group_index
-    unless logged_in?
-      redirect_to home_path
+    if logged_in?
+      @nutriments = current_user.nutriments.includes(:groups).order(created_at: :desc).select do |ntr|
+        ntr if ntr.nutriment_groups.empty?
+      end
     else
-      @nutriments = current_user.nutriments.order(created_at: :desc).select { |ntr| ntr if ntr.nutriment_groups.empty? }
+      redirect_to home_path
     end
   end
 

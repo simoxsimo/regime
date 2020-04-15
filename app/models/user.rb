@@ -8,6 +8,6 @@ class User < ApplicationRecord
   private
 
   def authentication_case
-    self.name.downcase!
+    name.downcase!
   end
 end

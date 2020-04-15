@@ -1,9 +1,9 @@
 class GroupsController < ApplicationController
   def new
-    unless logged_in?
-      redirect_to home_path
-    else
+    if logged_in?
       @group = current_user.groups.new
+    else
+      redirect_to home_path
     end
   end
 
@@ -12,7 +12,7 @@ class GroupsController < ApplicationController
     @group = current_user.groups.create(group_params)
     if @group.save
       loop_and_store(@group)
-      flash[:success] = "Your group has been Successfully created !!"
+      flash[:success] = 'Your group has been Successfully created !!'
       redirect_to(request.referrer)
     else
       flash.now[:warning] = @group.errors.full_messages
@@ -25,10 +25,10 @@ class GroupsController < ApplicationController
   end
 
   def index
-    unless logged_in?
-      redirect_to home_path
-    else
+    if logged_in?
       @groups = Group.all.order(name: :asc)
+    else
+      redirect_to home_path
     end
   end
 
@@ -49,5 +49,4 @@ class GroupsController < ApplicationController
       group.nutriment_groups.relationship(group.id, nutriment_id) unless nutriment_id.empty?
     end
   end
-
 end

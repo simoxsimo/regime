@@ -11,8 +11,8 @@
       <article>
         <% unless ntr.groups.empty? %>
           <section>
-            <%# Case of mutiple groups %>
-            <% ntr.groups.each do |group| %>
+            <%# Case of mutiple groups & Eager loading Active Storage models%>
+            <% ntr.groups.includes(icon_attachment: :blob).each do |group| %>
               <%= image_tag(group.icon) %>
             <% end %>
           </section>
