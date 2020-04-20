@@ -1,0 +1,34 @@
+<nav>
+  <%= link_to image_tag("arrow.svg", :border=>0, :class=> 'back-icon'), groups_path %>
+  <h1>Add a group</h1>
+  <%= link_to 'Log Out', logout_path, method: "delete" %>
+</nav>
+
+<section>
+  <div>
+    <% if flash[:success] %>
+      <h5><%= flash[:success] %></h5>
+    <% elsif @group.errors.any? %>
+        <% flash.now[:warning].each do |msg| %>
+          <h5><%= msg %></h5>
+        <% end %>
+    <% end %>
+  </div>
+  <%= form_for @group do |f| %>
+    <section>
+      <%= f.label :name, "Group name" %>
+      <%= f.text_field :name %>
+    </section>
+    <section>
+      <%= f.label :icon, "Group image" %>
+      <%= f.file_field :icon %>
+    </section>
+    <section>
+      <%= f.fields_for :nutriments, @group.nutriments do |g| %>
+       <%= g.label :ids, "Choose nutriment(s)" %>
+       <%= g.collection_select(:ids, Nutriment.all, :id, :name, {:prompt => "Choose the nutriment(s) for this group"}, {:multiple => true}) %>
+      <% end %>
+    </section>
+    <%= f.submit "Create", class: "form-btn" %>
+  <% end %>
+</section>

@@ -1,0 +1,22 @@
+<nav>
+  <%= link_to image_tag("arrow.svg", :border=>0, :class=> 'back-icon'), home_path %>
+  <h1>LOG IN</h1>
+  <%# Submit the form using an anchor tag %>
+  <%= link_to_function "Login","javascript:document.getElementById('login_form').submit(); return false" %>
+</nav>
+
+<section>
+  <div>
+    <% if flash.now[:danger] %>
+      <h5><%= flash.now[:danger] %></h5>
+    <% end %>
+  </div>
+  <%= form_for :session,
+    url: { method: 'post', action: 'create' },
+    html: { class: 'form', id: 'login_form'} do |f| %>
+    <%= f.label :name, "Username" %>
+    <%= f.text_field :name %>
+  <% end %>
+</section>
+
+

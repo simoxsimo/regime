@@ -1,0 +1,31 @@
+<nav>
+  <%= link_to image_tag("arrow.svg", :border=>0, :class=> 'back-icon'), groups_path %>
+  <h1><%= @group.name %></h1>
+  <%= link_to 'Log Out', logout_path, method: "delete" %>
+</nav>
+
+<section>
+  <div class="list">
+    <% @group.nutriments.includes(:groups, :author).each do |ntr|%>
+      <article>
+        <% unless ntr.groups.empty? %>
+          <section>
+            <%# Case of mutiple groups & Eager loading Active Storage models%>
+            <% ntr.groups.includes(icon_attachment: :blob).each do |group| %>
+              <%= image_tag(group.icon) if group.icon.attached?%>
+            <% end %>
+          </section>
+        <% end%>
+        <div class="list-text">
+          <h3><%= ntr.name.capitalize %></h3>
+          <span><%= ntr.created_at.to_date %></span>
+        </div>
+        <h3><%= ntr.author.name %></h3>
+      </article>
+    <% end%>
+  </div>
+</section>
+
+<footer>
+  <%= button_to "Add New", new_nutriment_path, {method: :get, class: 'btn footer-btn'} %>
+</footer>

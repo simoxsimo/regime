@@ -1,0 +1,35 @@
+<nav>
+  <%# -- Create a new Nutrition can be accessed from three views we check the previous view and then we decide where to go back -- %>
+  <%= link_to image_tag("arrow.svg", :border=>0, :class=> 'back-icon'), nutriments_path %>
+  <h1>Add a nutriment</h1>
+  <%= link_to 'Log Out', logout_path, method: "delete" %>
+</nav>
+
+<section>
+  <div>
+    <% if flash[:success] %>
+      <h5><%= flash[:success] %></h5>
+    <% elsif @nutriment.errors.any? %>
+        <% flash.now[:warning].each do |msg| %>
+          <h5><%= msg %></h5>
+        <% end %>
+    <% end %>
+  </div>
+  <%= form_for @nutriment do |f| %>
+    <section>
+      <%= f.label :name, "Nutriment name" %>
+      <%= f.text_field :name %>
+    </section>
+    <section>
+      <%= f.label :amount, "amount (Kcal)" %>
+      <%= f.text_field :amount %>
+    </section>
+    <section>
+      <%= f.fields_for :groups, @nutriment.groups do |g| %>
+       <%= g.label :ids, "Choose group(s)" %>
+       <%= g.collection_select(:ids, Group.all, :id, :name, {:prompt => "Choose the nutriment group(s)"}, {:multiple => true}) %>
+      <% end %>
+    </section>
+    <%= f.submit "Create", class: "form-btn" %>
+  <% end %>
+</section>

@@ -1,0 +1,16 @@
+ <section class="show-page">
+   <% if flash[:success] %>
+      <h5 class="login-flash"><%= flash[:success] %></h5>
+    <% end %>
+   <h3><%= current_user.name.capitalize %></h3>
+   <ul>
+     <li><%= link_to 'All my nutriments', nutriments_path %></li>
+     <li><%= link_to 'All my external nutriments', ext_nutriments_path %></li>
+     <li><%= link_to 'My daily nutriments', daily_nutriments_path %></li>
+     <li><%= link_to 'All groups', groups_path %></li>
+   </ul>
+ </section>
+
+ <footer>
+   <%= button_to "LOG OUT", logout_path, {method: :delete, class: 'btn logout-btn'} %>
+ </footer>
