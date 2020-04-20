@@ -23,7 +23,7 @@ RSpec.describe(Nutriment, type: :model) do
 
   context 'should has many' do
     it 'nutriments' do
-      should have_many(:nutriment_groups).class_name('NutrimentGroup').with_foreign_key('nutriment_id')
+      should have_many(:nutriment_groups).with_foreign_key('nutriment_id')
     end
     it 'groups' do
       should have_many(:groups).through(:nutriment_groups).source(:group)

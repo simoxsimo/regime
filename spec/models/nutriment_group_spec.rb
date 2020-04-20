@@ -23,7 +23,7 @@ RSpec.describe(NutrimentGroup, type: :model) do
 
   context 'should belong to' do
     it 'nutriment' do
-      should belong_to(:nutriment).class_name('Nutriment').optional
+      should belong_to(:nutriment).optional
     end
     it 'group' do
       should belong_to(:group).class_name('Group').optional

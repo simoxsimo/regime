@@ -3,6 +3,7 @@
   <h1>All groups</h1>
   <%= link_to 'Log Out', logout_path, method: "delete" %>
 </nav>
+
 <section class="show-page groups">
   <%# Eager loading Active Storage models %>
   <% @groups.includes(icon_attachment: :blob).each do |grp| %>

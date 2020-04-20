@@ -1,6 +1,6 @@
 class Nutriment < ApplicationRecord
   belongs_to :author, class_name: 'User', optional: true
-  has_many :nutriment_groups, class_name: 'NutrimentGroup', foreign_key: 'nutriment_id'
+  has_many :nutriment_groups, foreign_key: 'nutriment_id'
   has_many :groups, through: :nutriment_groups, source: :group
 
   validates :name, presence: true, length: { maximum: 24 }

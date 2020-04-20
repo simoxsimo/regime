@@ -15,10 +15,10 @@ RSpec.describe(User, type: :model) do
 
   context 'should has many' do
     it 'nutriments' do
-      should have_many(:nutriments).class_name('Nutriment').with_foreign_key('author_id').dependent(:destroy)
+      should have_many(:nutriments).with_foreign_key('author_id').dependent(:destroy)
     end
     it 'groups' do
-      should have_many(:groups).class_name('Group').with_foreign_key('author_id').dependent(:destroy)
+      should have_many(:groups).with_foreign_key('author_id').dependent(:destroy)
     end
   end
 end

@@ -1,5 +1,5 @@
 class NutrimentGroup < ApplicationRecord
-  belongs_to :nutriment, class_name: 'Nutriment', optional: true
+  belongs_to :nutriment, optional: true
   belongs_to :group, class_name: 'Group', optional: true
   validates :nutriment_id, presence: true, uniqueness: { scope: :group_id }
   validates :group_id, presence: true
